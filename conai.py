@@ -47,7 +47,7 @@ class VoiceAI:
         print("Calibrating microphone, please wait...")
         with self.microphone as source:
             self.recognizer.adjust_for_ambient_noise(source, duration=1.5)
-        print("✅ Microphone calibrated. Ready to chat!")
+        print("Microphone calibrated. Ready to chat!")
 
     def listen(self):
         try:
