@@ -3,7 +3,7 @@ import sys
 import speech_recognition as sr
 import pyttsx3
 import google.generativeai as genai
-from elevenlabs import play
+from elevenlabs.play import play
 from elevenlabs.client import ElevenLabs
 from dotenv import load_dotenv
 
@@ -84,8 +84,10 @@ class VoiceAI:
             print("Speaking with ElevenLabs...")
             audio = self.elevenlabs_client.text_to_speech.convert(
                 voice_id=self.elevenlabs_voice_id,
-                model_id="eleven_multilingual_v2",
-                text=text
+                optimize_streaming_latency="0",
+                output_format="mp3_44100_128",
+                text=text,
+                model_id="eleven_multilingual_v2"
             )
             play(audio)
         except Exception as e:
